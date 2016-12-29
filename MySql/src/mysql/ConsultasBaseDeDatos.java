@@ -269,8 +269,14 @@ class ConsultasBaseDeDatos {
     }
 
     private static void borrarTablaDepartamento(Connection conexion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        try {
+            String comando = "DROP TABLE 'departamentos'";
+            Statement sentencia = conexion.createStatement();
+            sentencia.executeUpdate(comando);
+        } catch (Exception e) {
+            Logger.getLogger(ConsultasBaseDeDatos.class.getName()).log(Level.SEVERE, null, e);
+        }
+}
 
     private static void crearTablaEmpleado(Connection conexion) {
         try {
